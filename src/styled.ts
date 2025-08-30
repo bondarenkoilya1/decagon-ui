@@ -15,7 +15,7 @@ export const GlobalStyle = css`
   body {
     font-family: Arial, Helvetica, "Liberation Sans", sans-serif;
     color: #000;
-    background-color: #fff;
+    background-color: #e8e8e8;
   }
 
   body,
