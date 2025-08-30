@@ -1,11 +1,21 @@
+// vite.config.ts
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 
 export default defineConfig(({ command }) => {
+  const commonConfig = {
+    plugins: [react()],
+    resolve: {
+      alias: {
+        "@": resolve(__dirname, "src")
+      }
+    }
+  };
+
   if (command === "serve") {
     return {
-      plugins: [react()],
+      ...commonConfig,
       root: ".",
       build: {
         rollupOptions: {
@@ -16,7 +26,7 @@ export default defineConfig(({ command }) => {
   }
 
   return {
-    plugins: [react()],
+    ...commonConfig,
     build: {
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
@@ -25,12 +35,12 @@ export default defineConfig(({ command }) => {
         formats: ["es", "cjs"]
       },
       rollupOptions: {
-        external: ["react", "react-dom", "react-router-dom", "@emotion/react", "@emotion/styled"],
+        external: ["react", "react-dom", "react-router", "@emotion/react", "@emotion/styled"],
         output: {
           globals: {
             react: "React",
             "react-dom": "ReactDOM",
-            "react-router-dom": "ReactRouterDOM",
+            "react-router": "ReactRouter",
             "@emotion/react": "EmotionReact",
             "@emotion/styled": "EmotionStyled"
           }
