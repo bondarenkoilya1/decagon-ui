@@ -1,14 +1,14 @@
-export type NavigationItemProps = {
+export interface NavigationItemProps {
   title: string;
   url: string;
-};
+}
 
-export type NavigationSectionProps = {
+export interface NavigationSectionProps {
   title: string;
   items: NavigationItemProps[];
-};
+}
 
-export type SidebarProps = {
+export interface SidebarProps {
   title: string;
   sections?: NavigationSectionProps[];
-};
+}
